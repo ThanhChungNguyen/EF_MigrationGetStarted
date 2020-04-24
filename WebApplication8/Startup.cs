@@ -28,6 +28,8 @@ namespace WebApplication8
             services.AddDbContext<BloggingContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
 
+            services.BuildServiceProvider().GetService<BloggingContext>().Database.Migrate();
+
             services.AddControllersWithViews();
         }
 
